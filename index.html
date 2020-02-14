@@ -1,34 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue JS</title>
-    <script src="vue.js"></script>
-  </head>
 
-  <body>
-    <div id="app">
-      <h1 v-once>{{title}}</h1>
-      <p>{{sayHello()}} - <a v-bind:href="link"> Google </a></p>
-      <p v-html="finishedLink"></p>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue JS</title>
+  <script src="vue.js"></script>
+</head>
 
-    <script>
-      new Vue({
-        el: "#app",
-        data: {
-          title: "Hello World!",
-          link: "https://google.com",
-          finishedLink: '<a href="http://google.com">Google</a>'
+<body>
+  <div id="app">
+    <h1 v-once>{{title}}</h1>
+    <p>{{sayHello()}} - <a v-bind:href="link"> Google </a></p>
+    <p v-html="finishedLink"></p>
+  </div>
+
+  <div id="app-1">
+    <p>{{counter * 3 > 10 ? "greater than 10" : "smaller than 10"}}</p>
+    <button v-on:click="increaseCount(2, $event)">Click Me</button>
+    <button v-on:click="counter++">Click Me</button>
+    <p v-on:mousemove="trackCoordinates">
+      Coordinates: {{x}},{{y}} - <span v-on:mousemove.stop="">Dead Spot</span>
+    </p>
+    <input type="text" v-on:keyup.enter.space="alertMe" />
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app-1",
+      data: {
+        counter: 0,
+        x: 0,
+        y: 0
+      },
+      methods: {
+        increaseCount: function (step, event) {
+          this.counter += step;
         },
-        methods: {
-          sayHello: function() {
-            this.title = "Hello Mars!";
-            return this.title;
-          }
+        trackCoordinates: function (event) {
+          this.x = event.clientX;
+          this.y = event.clientY;
+        },
+        alertMe: function () {
+          alert("WARNING");
         }
-      });
-    </script>
-  </body>
+      }
+    });
+
+    new Vue({
+      el: "#app",
+      data: {
+        title: "Hello World!",
+        link: "https://google.com",
+        finishedLink: '<a href="http://google.com">Google</a>'
+      },
+      methods: {
+        sayHello: function () {
+          this.title = "Hello Mars!";
+          return this.title;
+        }
+      }
+    });
+  </script>
+</body>
+
 </html>
