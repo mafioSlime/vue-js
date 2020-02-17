@@ -11,14 +11,14 @@
 <body>
   <div id="app">
     <h1 v-once>{{title}}</h1>
-    <p>{{sayHello()}} - <a v-bind:href="link"> Google </a></p>
+    <p>{{sayHello()}} - <a :href="link"> Google </a></p>
     <p v-html="finishedLink"></p>
   </div>
 
   <div id="app-1">
     <p>{{counter * 3 > 10 ? "greater than 10" : "smaller than 10"}}</p>
-    <button v-on:click="increaseCount(2, $event)">Click Me</button>
-    <button v-on:click="counter++">Click Me</button>
+    <button @click="increaseCount(2, $event)">Click Me</button>
+    <button @click="counter++">Click Me</button>
     <p v-on:mousemove="trackCoordinates">
       Coordinates: {{x}},{{y}} - <span v-on:mousemove.stop="">Dead Spot</span>
     </p>

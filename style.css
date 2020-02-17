@@ -1,0 +1,18 @@
+.demo {
+  width: 250px;
+  height: 250px;
+  background-color: #eaeaea;
+  margin: 2rem;
+}
+
+.red {
+  background-color: crimson;
+}
+
+.blue {
+  background-color: royalblue;
+}
+
+.orange {
+  background-color: tomato;
+}

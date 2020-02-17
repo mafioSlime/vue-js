@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styling</title>
+  <script src="vue.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="demo" @click="attachRed = !attachRed" :class="bgColor"></div>
+    <div class="demo" :class="bgColor "></div>
+    <div class="demo"></div>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        attachRed: false
+      },
+      computed: {
+        bgColor: function () {
+          return {
+            red: this.attachRed,
+            blue: !this.attachRed
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

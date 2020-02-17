@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Computed Properties</title>
   <script src="vue.js"></script>
 </head>
@@ -17,7 +17,6 @@
     <p>Result: {{result()}} | {{output}}</p>
   </div>
 
-
   <script>
     new Vue({
       el: "#app",
@@ -27,15 +26,23 @@
       },
       computed: {
         output: function () {
-          return this.counter > 5 ? "greater than 5" : "less than 5"
+          return this.counter > 5 ? "greater than 5" : "less than 5";
+        }
+      },
+      watch: {
+        counter: function (value) {
+          var vm = this;
+          setTimeout(function () {
+            vm.counter = 0;
+          }, 2000);
         }
       },
       methods: {
         result: function () {
-          return this.counter > 5 ? "greater than 5" : "less than 5"
+          return this.counter > 5 ? "greater than 5" : "less than 5";
         }
       }
-    })
+    });
   </script>
 </body>
 
