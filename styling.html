@@ -2,35 +2,70 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Styling</title>
   <script src="vue.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <!-- <div id="app">
+      <div class="demo" @click="attachRed = !attachRed" :class="bgColor"></div>
+      <div class="demo" :class="bgColor "></div>
+      <div class="demo" :class="color"></div>
+      <hr />
+      <input type="text" v-model="color" />
+    </div> -->
+
   <div id="app">
-    <div class="demo" @click="attachRed = !attachRed" :class="bgColor"></div>
-    <div class="demo" :class="bgColor "></div>
-    <div class="demo"></div>
+    <div class="demo" :style="changeStyle"></div>
+    <div class="demo" :style="changeStyle"></div>
+    <div class="demo" :style="[changeStyle, {height: width + 'px'}]"></div>
+    <input type="text" v-model="color">
+    <input type="text" v-model="width">
   </div>
+
 
   <script>
     new Vue({
       el: "#app",
       data: {
-        attachRed: false
+        color: 'red',
+        width: 200
       },
       computed: {
-        bgColor: function () {
+        changeStyle: function () {
           return {
-            red: this.attachRed,
-            blue: !this.attachRed
+            backgroundColor: this.color,
+            width: this.width + 'px'
           }
         }
       }
     })
+  </script>
+
+
+
+
+
+
+  <!-- <script>
+      new Vue({
+        el: "#app",
+        data: {
+          attachRed: false,
+          color: "red"
+        },
+        computed: {
+          bgColor: function() {
+            return {
+              red: this.attachRed,
+              blue: !this.attachRed
+            };
+          }
+        }
+      }); -->
   </script>
 </body>
 
